@@ -1,0 +1,40 @@
+.input {
+  height: 70px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    color: #2f2d52;
+    font-size: 18px;
+
+    &::placeholder {
+      color: lightgray;
+    }
+  }
+
+  .send {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    img {
+      height: 24px;
+      cursor: pointer;
+    }
+
+    button {
+      border: none;
+      padding: 10px 15px;
+      background-color: #8da4f1;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}
