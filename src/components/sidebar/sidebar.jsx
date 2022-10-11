@@ -8,8 +8,10 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <Navbar />
-      <Search />
-      <Chats />
+      <div className="userSidebar">
+        <Search />
+        <Chats />
+      </div>
     </div>
   )
 }

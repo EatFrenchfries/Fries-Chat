@@ -3,7 +3,7 @@
 
   .searchForm {
     padding: 5px;
-    background-color: #615e9f;
+    background-image: linear-gradient(to left, #3b5bdb, #4656db, #5150db, #5c49da, #6741d9);
 
     input {
       background-color: transparent;
@@ -29,11 +29,11 @@
   align-items: center;
   padding: 10px;
   gap: 10px;
-  color: white;
+  color: darkblue;
   cursor: pointer;
 
   &:hover {
-    background-color: #2f2d52;
+    background-image: linear-gradient(to right, #1c7ed6, #157adc, #1776e0, #2171e5, #2f6be8, #3967e9, #4462ea, #4e5deb, #5758eb, #5f53ea, #684ee9, #7048e8);
   }
 
   img {
@@ -51,7 +51,7 @@
 
     p {
       font-size: 14px;
-      color: lightgray;
+      color: #5f3dc4;
     }
   }
 }

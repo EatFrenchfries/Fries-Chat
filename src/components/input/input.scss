@@ -31,8 +31,9 @@
 
     button {
       border: none;
+      border-radius: 4px;
       padding: 10px 15px;
-      background-color: #8da4f1;
+      background-image: linear-gradient(to right, #4dabf7, #50a7f9, #55a2fb, #5d9dfd, #6697fd, #6c93fe, #738efe, #7b89fd, #8184fd, #8880fc, #907bfb, #9775fa);
       color: white;
       cursor: pointer;
     }

@@ -19,6 +19,7 @@ const Input = () => {
   const { data } = useContext(ChatContext)
 
   const handleSend = async () => {
+    if (text.trim() === '') return
     await updateDoc(doc(db, 'chats', data.chatId), {
       message: arrayUnion({
         id: uuid(),

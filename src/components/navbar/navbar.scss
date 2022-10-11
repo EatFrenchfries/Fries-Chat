@@ -13,11 +13,11 @@
 .navbar {
   display: flex;
   align-items: center;
-  background-color: #2f2d52;
+  background-image: linear-gradient(to right, #4dabf7, #50a7f9, #55a2fb, #5d9dfd, #6697fd, #6c93fe, #738efe, #7b89fd, #8184fd, #8880fc, #907bfb, #9775fa);
   height: 70px;
   padding: 10px;
   justify-content: space-between;
-  color: #ddddf7;
+  color: darkblue;
 
   .logo {
     font-weight: bold;
@@ -39,7 +39,7 @@
     }
 
     button {
-      background-color: #5d5b8d;
+      background-image: linear-gradient(to left, #3b5bdb, #4656db, #5150db, #5c49da, #6741d9);
       border-radius: 4px;
       color: #ddddf7;
       font-size: 10px;

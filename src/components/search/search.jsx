@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 
-import { collection, query, where, getDocs, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore'
+import { collection, query, getDocs, doc, updateDoc, serverTimestamp, getDoc, setDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
 import { AuthContext } from '../../context/auth-context'
 import { ChatContext } from '../../context/chat-context'
@@ -14,13 +14,20 @@ const Search = () => {
   const { currentUser } = useContext(AuthContext)
 
   const handleSearch = async () => {
-    const q = query(collection(db, 'users'), where('displayName', '==', userName))
+    if (userName.trim() === '') return
+    const q = query(collection(db, 'users'))
+    setErr(null)
 
     try {
       const querySnapshot = await getDocs(q)
+      let searchResults = []
       querySnapshot.forEach(doc => {
-        setUser(doc.data())
+        if (doc.data().displayName.includes(userName)) {
+          searchResults.push(doc.data())
+        }
       })
+      if (searchResults.length === 0) setErr(true)
+      setUser(searchResults)
     } catch (error) {
       setErr(error)
     }
@@ -33,7 +40,7 @@ const Search = () => {
   }
 
   const { dispatch } = useContext(ChatContext)
-  const handleSelect = async () => {
+  const handleSelect = async user => {
     const combinedId = currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid
 
     try {
@@ -73,15 +80,18 @@ const Search = () => {
       <div className="searchForm">
         <input type="text" placeholder="Find a user" onKeyDown={handleKey} onChange={e => setUserName(e.target.value)} value={userName} />
       </div>
-      {err && <div className="notFound">User not found!</div>}
-      {user && (
-        <div className="userChat" onClick={handleSelect}>
-          <img src={user.photoURL} alt="" />
-          <div className="userChatInfo">
-            <span>{user.displayName}</span>
-          </div>
-        </div>
-      )}
+      <div className="searchResult">
+        {err && <div className="notFound">User not found!</div>}
+        {user &&
+          user.map(userInfo => (
+            <div className="userChat" onClick={() => handleSelect(userInfo)} key={userInfo.uid}>
+              <img src={userInfo.photoURL} alt="" />
+              <div className="userChatInfo">
+                <span>{userInfo.displayName}</span>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   )
 }

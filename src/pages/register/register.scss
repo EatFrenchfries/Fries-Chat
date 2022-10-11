@@ -1,5 +1,5 @@
 .formContainer {
-  background-color: #a7bcff;
+  background-image: linear-gradient(to right bottom, #a5d8ff, #a3d3ff, #a2ceff, #a2c9ff, #a3c4ff, #a3bfff, #a4baff, #a6b4ff, #a7adff, #a9a6ff, #ac9ffe, #b197fc);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -43,7 +43,7 @@
       }
 
       button {
-        background-color: #7b96ec;
+        background-image: linear-gradient(to right bottom, #a5d8ff, #a3d3ff, #a2ceff, #a2c9ff, #a3c4ff, #a3bfff, #a4baff, #a6b4ff, #a7adff, #a9a6ff, #ac9ffe, #b197fc);
         color: white;
         padding: 10px;
         font-weight: bold;
