@@ -4,6 +4,7 @@ import { collection, query, getDocs, doc, updateDoc, serverTimestamp, getDoc, se
 import { db } from '../../firebase'
 import { AuthContext } from '../../context/auth-context'
 import { ChatContext } from '../../context/chat-context'
+import Fries from '../../images/fries.jpg'
 
 import './search.scss'
 
@@ -85,7 +86,14 @@ const Search = () => {
         {user &&
           user.map(userInfo => (
             <div className="userChat" onClick={() => handleSelect(userInfo)} key={userInfo.uid}>
-              <img src={userInfo.photoURL} alt="" />
+              <img
+                src={userInfo.photoURL}
+                alt=""
+                onError={({ currentTarget }) => {
+                  currentTarget.onerror = null
+                  currentTarget.src = Fries
+                }}
+              />
               <div className="userChatInfo">
                 <span>{userInfo.displayName}</span>
               </div>

@@ -1,4 +1,19 @@
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
+
 .input {
+  @include mobile {
+    flex-direction: column;
+  }
   height: 70px;
   background-color: white;
   padding: 10px;
@@ -17,16 +32,27 @@
     &::placeholder {
       color: lightgray;
     }
+
+    @include tablet {
+      font-size: 14px;
+    }
   }
 
   .send {
     display: flex;
     align-items: center;
     gap: 10px;
+    @include mobile {
+      width: 100%;
+      justify-content: flex-end;
+    }
 
     img {
       height: 24px;
       cursor: pointer;
+      @include mobile {
+        height: 12px;
+      }
     }
 
     button {
@@ -36,6 +62,10 @@
       background-image: linear-gradient(to right, #4dabf7, #50a7f9, #55a2fb, #5d9dfd, #6697fd, #6c93fe, #738efe, #7b89fd, #8184fd, #8880fc, #907bfb, #9775fa);
       color: white;
       cursor: pointer;
+      @include mobile {
+        font-size: 12px;
+        padding: 5px 10px;
+      }
     }
   }
 }

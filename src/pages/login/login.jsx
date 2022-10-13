@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 
 import { auth } from '../../firebase'
 
+import './login.scss'
+
 const Login = () => {
   const [error, setError] = useState('')
   const navigate = useNavigate()
@@ -30,21 +32,28 @@ const Login = () => {
     }
   }
   return (
-    <div className="formContainer">
-      <div className="formWrapper">
-        <span className="logo">Fries Chat</span>
-        <span className="title">Login</span>
-        <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="email" />
-          <input type="password" placeholder="password" />
-          <button>Sign In</button>
-        </form>
-        <p>
-          You don't have an account? <Link to="/register">Register</Link>
-        </p>
-        {error && <p className="error">{error}</p>}
+    <>
+      <div className="tip">
+        You can use this account for test.
+        <div className="email">Email : user8@gmail.com</div>
+        <div className="password">Password : 123456</div>
       </div>
-    </div>
+      <div className="formContainer">
+        <div className="formWrapper">
+          <span className="logo">Fries Chat</span>
+          <span className="title">Login</span>
+          <form onSubmit={handleSubmit}>
+            <input type="email" placeholder="email" />
+            <input type="password" placeholder="password" />
+            <button>Sign In</button>
+          </form>
+          <p>
+            You don't have an account? <Link to="/register">Register</Link>
+          </p>
+          {error && <p className="error">{error}</p>}
+        </div>
+      </div>
+    </>
   )
 }
 

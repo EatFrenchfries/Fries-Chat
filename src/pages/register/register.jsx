@@ -84,7 +84,7 @@ const Register = () => {
           <input type="password" placeholder="password" />
           <input style={{ display: 'none' }} type="file" id="file" onChange={handleChange} />
           <label htmlFor="file">
-            <img src={avatar === null ? addAvatar : URL.createObjectURL(avatar)} alt="" />
+            <img src={avatar === null ? addAvatar : URL.createObjectURL(avatar)} alt="" aria-required />
             <span>{avatarURL === '' ? 'Add an avatar' : avatarURL}</span>
           </label>
           <button disabled={loading}>Sign Up</button>

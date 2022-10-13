@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef } from 'react'
 
 import { AuthContext } from '../../../context/auth-context'
 import { ChatContext } from '../../../context/chat-context'
+import Fries from '../../../images/fries.jpg'
 
 import './message.scss'
 
@@ -21,7 +22,14 @@ const Message = ({ message }) => {
   return (
     <div ref={ref} className={`message ${message.senderId === currentUser.uid && 'owner'}`}>
       <div className="messageInfo">
-        <img src={message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL} alt="" />
+        <img
+          src={message.senderId === currentUser.uid ? currentUser.photoURL : data.user.photoURL}
+          alt=""
+          onError={({ currentTarget }) => {
+            currentTarget.onerror = null
+            currentTarget.src = Fries
+          }}
+        />
         <span>{`${hour > 9 ? hour : '0' + hour} : ${min > 9 ? min : '0' + min}`}</span>
       </div>
       <div className="messageContent">

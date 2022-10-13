@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useReducer, useState } from 'react'
 import { AuthContext } from './auth-context'
 
 const INITIAL_STATE = {
@@ -9,6 +9,7 @@ export const ChatContext = createContext(INITIAL_STATE)
 
 export const ChatContextProvider = ({ children }) => {
   const { currentUser } = useContext(AuthContext)
+  const [isOpen, setIsOpen] = useState(true)
 
   const chatReducer = (state, action) => {
     switch (action.type) {
@@ -29,5 +30,5 @@ export const ChatContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(chatReducer, INITIAL_STATE)
 
-  return <ChatContext.Provider value={{ data: state, dispatch }}>{children}</ChatContext.Provider>
+  return <ChatContext.Provider value={{ isOpen, setIsOpen, data: state, dispatch }}>{children}</ChatContext.Provider>
 }

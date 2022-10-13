@@ -1,4 +1,26 @@
+@mixin mobile {
+  @media screen and (max-width: 480px) {
+    @content;
+  }
+}
 .sidebar {
+  @include mobile {
+    flex: none;
+    width: 100%;
+  }
+  flex: 1;
+  background-image: linear-gradient(to right, #4dabf7, #50a7f9, #55a2fb, #5d9dfd, #6697fd, #6c93fe, #738efe, #7b89fd, #8184fd, #8880fc, #907bfb, #9775fa);
+  position: relative;
+
+  .userSidebar {
+    height: calc(92% - 70px);
+    overflow-y: scroll;
+  }
+}
+.close {
+  @include mobile {
+    display: none;
+  }
   flex: 1;
   background-image: linear-gradient(to right, #4dabf7, #50a7f9, #55a2fb, #5d9dfd, #6697fd, #6c93fe, #738efe, #7b89fd, #8184fd, #8880fc, #907bfb, #9775fa);
   position: relative;
